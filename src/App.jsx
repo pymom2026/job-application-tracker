@@ -458,11 +458,11 @@ export default function App() {
         <div className="row" style={{ alignItems: "flex-end", gap: 12 }}>
           <div>
             <label style={{ display: "block", marginBottom: 4 }}>From</label>
-            <input type="date" className="input" value={dateFrom} onChange={e => setDateFrom(e.target.value)} />
+            <input type="text" className="input" placeholder="YYYY-MM-DD" value={dateFrom} onChange={e => setDateFrom(e.target.value)} />
           </div>
           <div>
             <label style={{ display: "block", marginBottom: 4 }}>To</label>
-            <input type="date" className="input" value={dateTo} onChange={e => setDateTo(e.target.value)} />
+            <input type="text" className="input" placeholder="YYYY-MM-DD" value={dateTo} onChange={e => setDateTo(e.target.value)} />
           </div>
           <div style={{ flex: 1 }} />
           <button className="btn btn-sm" onClick={loadDemo}>Load demo data</button>
