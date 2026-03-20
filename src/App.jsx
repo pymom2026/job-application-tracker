@@ -26,6 +26,38 @@ const DEFAULT_ALLOWLIST = {
     "job application",
     "offer letter",
     "congratulations",
+    "application update",
+    "regarding your application",
+    "thanks for applying",
+    "your resume",
+    "we wanted to reach out",
+    "following up",
+    "position at",
+    "role at",
+    "opportunity at",
+    "joining our team",
+    "hiring process",
+    "recruiting",
+    "candidacy",
+    "candidate",
+    "applied for",
+    "job opportunity",
+    "career opportunity",
+    "we reviewed your",
+    "your interest in",
+    "thanks for your interest",
+    "thank you for your interest",
+    "excited to share",
+    "move forward",
+    "next round",
+    "phone screen",
+    "technical interview",
+    "onsite interview",
+    "take home",
+    "coding challenge",
+    "assessment",
+    "we'd love to connect",
+    "love to learn more about you",
   ],
   body_keywords: [
     "applied for",
@@ -39,8 +71,19 @@ const DEFAULT_ALLOWLIST = {
     "not selected",
     "decided to move forward with other",
     "keep your resume on file",
+    "position you applied",
+    "thank you for taking the time",
+    "we appreciate your interest",
+    "carefully reviewed",
+    "difficult decision",
+    "high volume of applications",
+    "strong pool of candidates",
   ],
-  exclude_senders: ["noreply@linkedin.com", "jobs-noreply@linkedin.com"],
+  exclude_senders: [
+    "noreply@linkedin.com",
+    "jobs-noreply@linkedin.com",
+    "jobalerts@linkedin.com",
+  ],
 };
 
 // ─── Status classification prompt ─────────────────────────────────────────────
@@ -165,7 +208,7 @@ export default function App() {
     setLoadingMsg("Searching Gmail for job application emails…");
     try {
       // Build query from allowlist keywords + date range
-      const kwQuery = allowlist.subject_keywords.slice(0, 6)
+      const kwQuery = allowlist.subject_keywords
         .map(k => `subject:"${k}"`).join(" OR ");
       const afterDate  = Math.floor(new Date(dateFrom).getTime() / 1000);
       const beforeDate = Math.floor(new Date(dateTo  ).getTime() / 1000) + 86400;
